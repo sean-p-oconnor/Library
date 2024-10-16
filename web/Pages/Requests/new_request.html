@@ -1,0 +1,232 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Riverside Analytics Request</title>
+	<script>
+	const userAction = async () => {
+	const response = await fetch('http://rhapamet01.riversidehealthcare.net:8080/', {
+    method: 'POST',
+    body: myBody, // string or object
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+  const myJson = await response.json(); //extract JSON from the http response
+  // do something with myJson
+}
+
+	</script>
+<link href="styler.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+	<form>
+		<div style="width:960px; margin:0 auto; margin-top:25px">
+			<!--- overall div wrapper --->
+			<div class="card" style="width:27%; float: left; margin-right:3%">
+				<!--- left div wrapper --->
+				<div style="padding-bottom: 15px">
+					<label for="request_type"><p class="inter-bodier"><strong>Request Type</strong></p></label>
+					<select id="request_type" name="request_type">
+						<option value="new_report">		new report		</option>
+						<option value="modify_report">	modify report   </option>
+						<option value="problem">		problem/issue   </option>
+						<option value="access">			request access  </option>
+					</select>
+				</div>
+				<div style="padding-bottom: 15px">
+					<label for="category"><p class="inter-bodier"><strong>Category</strong></p></label>
+					<select id="category" name="category">
+						<option>-- select an option --</option>
+						<option value="financial">		financial  		</option>
+						<option value="operational">	operational  	</option>
+						<option value="regulatory">		regulatory 		</option>
+					</select>
+				</div>
+				<div style="padding-bottom: 10px">
+					<p class="inter-bodier">
+						<input type="checkbox" id="excel_export" name="excel_export" value="excel_export">
+						<label for="excel_export"> This report needs to be <br />exportable to Excel.</label><br>
+					</p>
+				</div>
+				<div style="padding-bottom: 10px">
+					<p class="inter-bodier">
+						<input type="checkbox" id="distribute_report" name="distribute_report" value="distribute_report">
+						<label for="distribute_report"> This report needs to be run <br />and distributed on a schedule.</label><br>
+					</p>
+				</div>
+				<div style="padding-bottom: 10px">
+					<p class="inter-bodier">
+						<input type="checkbox" id="required_report" name="required_report" value="required_report">
+						<label for="required_report"> The data in this report is required by a regulatory agency, auditor, or surveyor.</label><br>
+					</p>
+				</div>
+				<div style="padding-bottom: 10px">
+					<p class="inter-bodier">Does this report need to utilize real-time data?</p>
+					<input type="checkbox" id="real-time_yes" name="real-time_yes" value="Yes">
+					<label for="real-time_yes"> Yes</label><br>
+					<input type="checkbox" id="real-time_no" name="real-time_no" value="No">
+					<label for="real-time_no"> No</label><br>
+
+
+				</div>
+			</div> 	<!--- end left div wrapper --->
+			<div class="card" style="width:65%; float: left; padding-bottom: 30px; margin-bottom: 30px">
+				<div style="padding-bottom: 10px; width:100%">
+					<label for="report_name"><p class="inter-bodier"><strong style="padding-bottom:10px">Report Name</strong></label><br />
+					<input type="text" id="report_name" name="report_name" value="enter a good title" style="width:99%"></p>
+				</div>
+				<div style="padding-bottom: 10px; width:45%; margin-right:5%; float: left">
+					<label for="requestor"><strong>Requestor*</strong></label><br>
+					<select id="requestor" name="requestor" style="width:100%">
+						<option value="Sean OConnor">		Sean OConnor		</option>
+						<option value="Danielle Slegal">	Danielle Slegal   </option>
+						<option value="Darrel Drake">		Darrel Drake   </option>
+						<option value="Sean Pickering">		Sean Pickering  </option>
+					</select>
+				</div>
+				<div style="padding-bottom: 10px; width:45%; margin-left:5%; float: left">
+					<label for="director"><strong>Director/VP*</strong></label><br>
+					<select id="director" name="director" style="width:100%">
+						<option value="Justin Bruno">	Justin Bruno		</option>
+						<option value="Todd Johnson">	Todd Johnson  </option>
+						<option value="Kate Eschbach">	Kate Eschbach  </option>
+						<option value="Lacey Binnendyk">	Lacey Binnendyk  </option>
+					</select>
+				</div>
+				<div style="padding-bottom: 10px; width:45%; margin-right:5%; float: left">
+					<label for="report_use"><strong>Who could use this report</strong></label><br>
+					<select id="report_use" name="report_use" style="width:100%">
+						<option value="individual use">	individual/personal use		</option>
+						<option value="department use">	department use  </option>
+						<option value="organizational use">	organizational use  </option>
+
+					</select>
+				</div>
+				<div style="padding-bottom: 10px; width:45%; margin-left:5%; float: left">
+					<label for="organizational_impact"><strong>Direct organization impact</strong></label><br>
+					<select id="organizational_impact" name="organizational_impact" style="width:100%">
+						<option value="no users directly impacted">	no users directly impacted	</option>
+						<option value="system-wide">	system-wide  </option>
+						<option value="multiple departments">	multiple departments  </option>
+						<option value="single department">	single department	</option>
+						<option value="single team">	single team  </option>
+						<option value="single user">	single user </option>
+					</select>
+				</div>
+				<div style="padding-bottom: 10px; width:45%; margin-right:5%; float: left">
+					<label for="financial_impact"><strong>Financial impact</strong></label><br>
+					<select id="financial_impact" name="financial_impact" style="width:100%">
+						<option value="low &lt;10k">	low &lt;10k</option>
+						<option value="medium 10-100k">	medium 10-100k  </option>
+						<option value="high &gt;100k">	high &gt;100k  </option>
+						<option value="n/a">	n/a	</option>
+
+					</select>
+				</div>
+				<div style="padding-bottom: 10px; width:45%; margin-left:5%; float: left">
+					<label for="clinical_impact"><strong>Clinical quality/ Patient safety impact</strong></label><br>
+					<select id="clinical_impact" name="clinical_impact" style="width:100%">
+						<option value="no impact">	no impact </option>
+						<option value="low impact">	low opportunity for impact  </option>
+						<option value="moderate impact">	moderate opportunity for impact  </option>
+						<option value="high impact">high opportunity for impact	</option>
+
+					</select>
+				</div>
+				<div style="padding-bottom: 10px; width:100%">
+					<label for="What are you trying to understand"><strong>What are you looking to resolve, understand, or visualize?</strong></label><br>
+					<textarea id="understanding_field" name="understanding_field" rows="4" cols="81">Describe what you are trying to answer. Ex: I'm trying to figure out how many of our appointments result in surgeries.
+					</textarea>
+				</div>
+				<div style="padding-bottom: 10px; width:45%; margin-right:5%; float: left">
+					<label for="What data should be included"><p><strong>What data should be included?</strong></p></label><br>
+					<textarea id="understanding_data" name="understanding_data" rows="4" cols="35">List data elements (fields or columns) you would like to include, separated by a semicolon (;).
+					</textarea>
+				</div>
+				<div style="padding-bottom: 10px; width:45%; margin-left:5%; float: left">
+
+					<p class="inter-bodier"><strong>Preselected Fields</strong></p>
+					<summary>
+						<fieldset style="border: #fff">
+
+							<ul>
+								<li>
+									<label for="patient_age"><input type="checkbox" id="patient_age" name="patient_age" value="patient_age" style="margin-right: 5px">Patient Age</label>
+								</li>
+								<li>
+									<label for="patient_zip"><input type="checkbox" id="patient_zip" name="patient_zip" value="patient_zip" style="margin-right: 5px">Patient Zip</label>
+								</li>
+								<li>
+									<label for="physician"><input type="checkbox" id="physician" name="physician" value="physician" style="margin-right: 5px">Physician</label>
+								</li>
+								<li>
+									<label for="location"><input type="checkbox" id="location" name="location" value="location" style="margin-right: 5px">Location</label>
+								</li>
+							</ul>
+						</fieldset>
+					</summary>
+
+
+
+				</div>
+				<div style="padding-bottom: 10px; width:100%">
+					<label for="what_should_be_excluded"><strong>What should be excluded?</strong></label><br>
+					<textarea id="what_should_be_excluded" name="what_should_be_excluded" rows="4" cols="81">List data elements (fields or columns) you would like to include, separated by a semicolon (;). Example: I don’t need to know the birthday of our patients, just their age.
+					</textarea>
+				</div>
+				<div style="padding-bottom: 10px; width:45%; margin-right:5%; float: left">
+					<label for="Ways to Filter"><strong>Are there other ways to filter this report that would be beneficial?</strong></label><br>
+					<textarea id="ways_to_filter" name="ways_to_filter" rows="4" cols="35">
+					</textarea>
+				</div>
+				<div style="padding-bottom: 10px; width:45%; margin-left:5%; float: left">
+					<label for="What_if_this_isnt_done"><strong>What would be the impact if this request is unable to be completed?</strong></label><br>
+					<textarea id="what_if_this_isnt_done" name="what_if_this_isnt_done" rows="4" cols="35">
+					</textarea>
+				</div>
+				<div style="padding-bottom: 10px; width:45%; margin-right:5%; float: left">
+					<label for="similar_reports"><strong>Similiar Reports</strong></label><br>
+					<textarea id="similar_reports" name="similar_reports" rows="4" cols="35">
+					</textarea>
+				</div>
+				<div style="padding-bottom: 10px; width:45%; margin-left:5%; float: left">
+					<label for="additional_info"><strong>Additional Information</strong></label><br>
+					<textarea id="additional_info" name="additional_info" rows="4" cols="35">
+					</textarea>
+				</div>
+				<div>
+					<div style="padding-bottom: 10px">
+						<p class="inter-bodier">I have searched existing reports on Atlas and didn’t find any that would satisfy my request.</p>
+						<input type="checkbox" id="disclaimer_yes" name="disclaimer_yes" value="Yes">
+						<label for="disclaimer_yes"> Agreed</label><br>
+
+					</div>
+					<div style="padding-bottom: 10px; width:45%; margin-left:5%; float: left">
+						<p class="inter-bodier">Attach support files/example documents that may help complete the request.</p>
+						<input type="file" id="docpicker" accept=".doc,.docx,.xml,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" />
+					</div>
+					<div style="margin-top: 65px; padding-bottom: 10px; width:45%; margin-left:5%; float: left">
+						<input type="submit" value="Submit" onkeyup="callREST()">
+					</div>
+				</div><!--- end right div wrapper --->
+
+			</div><!--- end overall div wrapper --->
+	</form>
+	<div id="response"></div>
+
+	<script>
+		function callREST() {
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+		document.getElementById("response").innerHTML = this.responseText;
+		}
+		};
+		xhttp.open("GET", "URL", true);
+		xhttp.send();
+		}
+	</script>
+</body>
+</html>
